@@ -5,7 +5,30 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/mainactivity_imagebutton_photo"
+        android:background="#dc00ff"
+
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/mainactivity_imagebutton_familyphoto"
+        android:background="#ffd00a"
+        android:layout_alignTop="@+id/mainactivity_imagebutton_smarthome"
+        android:layout_toStartOf="@+id/mainactivity_imagebutton_photo" />
+
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/mainactivity_imagebutton_smarthome"
+        android:background="@color/primary_dark_material_dark"
+
+        android:layout_below="@+id/mainactivity_imagebutton_photo"
+        android:layout_toEndOf="@+id/mainactivity_imagebutton_photo" />
 
 </RelativeLayout>

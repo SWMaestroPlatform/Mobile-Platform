@@ -1,22 +1,38 @@
-package soma.iot.sympathyhome;
+package soma.iot.sympathyhome.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+import soma.iot.sympathyhome.R;
+import soma.iot.sympathyhome.ui.SYMHOMEActivity;
+
+public class SmartHomeAcitivy extends SYMHOMEActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_smart_home_acitivy);
+
+        initAcitivy();
+        setLayout();
+    }
+
+    @Override
+    public void setLayout() {
+
+    }
+
+    @Override
+    public void initAcitivy() {
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_smart_home_acitivy, menu);
         return true;
     }
 
