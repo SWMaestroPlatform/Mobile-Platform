@@ -8,15 +8,12 @@ import android.view.MenuItem;
 import soma.iot.sympathyhome.R;
 import soma.iot.sympathyhome.ui.SYMHOMEActivity;
 
-public class SmartHomeAcitivy extends SYMHOMEActivity {
+public class ReminderActivity extends SYMHOMEActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_smart_home_acitivy);
-
-        initActivity();
-        setLayout();
+        setContentView(R.layout.activity_reminder);
     }
 
     @Override
@@ -32,7 +29,7 @@ public class SmartHomeAcitivy extends SYMHOMEActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_smart_home_acitivy, menu);
+        getMenuInflater().inflate(R.menu.menu_reminder, menu);
         return true;
     }
 

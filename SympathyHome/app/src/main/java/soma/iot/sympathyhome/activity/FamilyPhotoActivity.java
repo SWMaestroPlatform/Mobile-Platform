@@ -1,10 +1,8 @@
 package soma.iot.sympathyhome.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import soma.iot.sympathyhome.R;
 import soma.iot.sympathyhome.ui.SYMHOMEActivity;
 
@@ -15,7 +13,7 @@ public class FamilyPhotoActivity extends SYMHOMEActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_family_photo);
 
-        initAcitivy();
+        initActivity();
         setLayout();
     }
 
@@ -25,7 +23,7 @@ public class FamilyPhotoActivity extends SYMHOMEActivity {
     }
 
     @Override
-    public void initAcitivy() {
+    public void initActivity() {
 
     }
 
@@ -47,7 +45,6 @@ public class FamilyPhotoActivity extends SYMHOMEActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

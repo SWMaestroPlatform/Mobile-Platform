@@ -23,7 +23,7 @@ public class MainActivity extends SYMHOMEActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initAcitivy();
+        initActivity();
         setLayout();
 
     }
@@ -31,12 +31,14 @@ public class MainActivity extends SYMHOMEActivity {
     private ImageButton mImgBtnFamilyPhoto;
     private ImageButton mImgBtnSmartHome;
     private ImageButton mImgBtnMainPhoto;
+    private ImageButton mImgBtnReminder;
 
     @Override
-    public void initAcitivy(){
+    public void initActivity(){
         mImgBtnFamilyPhoto = (ImageButton) findViewById(R.id.mainactivity_imagebutton_familyphoto);
         mImgBtnSmartHome = (ImageButton) findViewById(R.id.mainactivity_imagebutton_smarthome);
         mImgBtnMainPhoto = (ImageButton) findViewById(R.id.mainactivity_imagebutton_photo);
+        mImgBtnReminder = (ImageButton) findViewById(R.id.mainactivity_imagebutton_reminder);
     }
 
     @Override
@@ -52,6 +54,20 @@ public class MainActivity extends SYMHOMEActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, SmartHomeAcitivy.class));
+            }
+        });
+
+        mImgBtnReminder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ReminderActivity.class));
+            }
+        });
+
+        mImgBtnMainPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
     }
