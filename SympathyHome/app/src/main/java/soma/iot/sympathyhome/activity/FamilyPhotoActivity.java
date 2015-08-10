@@ -3,6 +3,17 @@ package soma.iot.sympathyhome.activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
+
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import soma.iot.sympathyhome.R;
 import soma.iot.sympathyhome.ui.SYMHOMEActivity;
 
@@ -17,6 +28,12 @@ public class FamilyPhotoActivity extends SYMHOMEActivity {
         setLayout();
     }
 
+    private ImageView mImageAddTest;
+
+    private ListView mImageListView;
+    private FamilyPhotoAdapter mImageAdapter;
+
+
     @Override
     public void setLayout() {
 
@@ -24,6 +41,12 @@ public class FamilyPhotoActivity extends SYMHOMEActivity {
 
     @Override
     public void initActivity() {
+        mImageAddTest = (ImageView) findViewById(R.id.familyphotoactivity_imageview_add);
+
+        mImageListView = (ListView) findViewById(R.id.familyphotoactivity_listview);
+
+        mImageAdapter = new FamilyPhotoAdapter();
+        mImageListView.setAdapter(mImageAdapter);
 
     }
 
@@ -47,4 +70,38 @@ public class FamilyPhotoActivity extends SYMHOMEActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    class FamilyPhotoAdapter extends BaseAdapter{
+
+        private List<String> mItems = new ArrayList<>();
+
+        @Override
+        public int getCount() {
+            return 10;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            ImageView imageView = new ImageView(getBaseContext());
+            Picasso.with(getBaseContext()).load("http://i.imgur.com/DvpvklR.png").into(imageView);
+
+            return imageView;
+        }
+    }
+
+    private static class ViewHolder {
+        ImageView mImageView;
+    }
+
+
 }
