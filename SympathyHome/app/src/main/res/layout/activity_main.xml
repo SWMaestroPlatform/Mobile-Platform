@@ -10,7 +10,7 @@
         android:layout_weight="0.15"
         android:orientation="horizontal">
         
-        <ImageButton
+         <ImageButton
             android:id="@+id/btn_menu"
             android:layout_marginLeft="10dp"
             android:layout_width="20dp"
