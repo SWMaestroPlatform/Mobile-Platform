@@ -1,12 +1,12 @@
 package soma.iot.sympathyhome.ui;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.FragmentActivity;
 
 /**
  * Created by YoonSeok on 15. 8. 10..
  */
-public abstract class SYMHOMEActivity extends AppCompatActivity{
+public abstract class SYMHOMEActivity extends FragmentActivity{
 
 //    private View decorView;
 
