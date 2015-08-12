@@ -1,49 +1,93 @@
 package soma.iot.sympathyhome.activity;
 
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import soma.iot.sympathyhome.R;
+import soma.iot.sympathyhome.fragment.LetterFrament;
+import soma.iot.sympathyhome.fragment.NotificationFrament;
 import soma.iot.sympathyhome.ui.SYMHOMEActivity;
 
-public class ReminderActivity extends SYMHOMEActivity {
+public class ReminderActivity extends SYMHOMEActivity implements View.OnClickListener {
+
+    final String TAG = "MainActivity";
+
+    int mCurrentFragmentIndex;
+    public final static int FRAGMENT_ONE = 0;
+    public final static int FRAGMENT_TWO = 1;
+
+    private Button mImgBtnNotification;
+    private Button mImgBtnLetter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reminder);
-    }
 
-    @Override
-    public void setLayout() {
-
+        initActivity();
+        setLayout();
     }
 
     @Override
     public void initActivity() {
+        mImgBtnNotification = (Button)findViewById(R.id.activity_reminder_btn_notification);
+        mImgBtnLetter = (Button)findViewById(R.id.activity_reminder_btn_letter);
 
+        mCurrentFragmentIndex = FRAGMENT_ONE;
+
+        fragmentReplace(mCurrentFragmentIndex);
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_reminder, menu);
-        return true;
+    public void setLayout() {
+        mImgBtnNotification.setOnClickListener(this);
+        mImgBtnLetter.setOnClickListener(this);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    public void fragmentReplace(int reqNewFragmentIndex) {
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        Fragment newFragment = null;
+        newFragment = getFragment(reqNewFragmentIndex);
+
+        // replace fragment
+        final FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        Log.d(TAG, "fragmentReplace " + reqNewFragmentIndex);
+        transaction.replace(R.id.fragment_reminder, newFragment);
+
+        // Commit the transaction
+        transaction.commit();
+    }
+
+    private Fragment getFragment(int idx) {
+        Fragment newFragment = null;
+
+        switch (idx) {
+            case FRAGMENT_ONE:
+                newFragment = new NotificationFrament();
+                break;
+            case FRAGMENT_TWO:
+                newFragment = new LetterFrament();
+                break;
+            default:
+                break;
         }
+        return newFragment;
+    }
 
-        return super.onOptionsItemSelected(item);
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.activity_reminder_btn_notification:
+                mCurrentFragmentIndex = FRAGMENT_ONE;
+                fragmentReplace(mCurrentFragmentIndex);
+                break;
+            case R.id.activity_reminder_btn_letter:
+                mCurrentFragmentIndex = FRAGMENT_TWO;
+                fragmentReplace(mCurrentFragmentIndex);
+                break;
+        }
     }
 }

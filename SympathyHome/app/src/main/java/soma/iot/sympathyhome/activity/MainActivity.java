@@ -1,16 +1,12 @@
 package soma.iot.sympathyhome.activity;
 
 import android.content.Intent;
-import android.media.Image;
-import android.sax.StartElementListener;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 import soma.iot.sympathyhome.R;
 import soma.iot.sympathyhome.ui.SYMHOMEActivity;
@@ -25,7 +21,6 @@ public class MainActivity extends SYMHOMEActivity {
 
         initActivity();
         setLayout();
-
     }
 
     private ImageButton mImgBtnFamilyPhoto;
