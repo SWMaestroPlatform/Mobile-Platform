@@ -1,6 +1,10 @@
 package soma.iot.sympathyhome.activity;
 
+import android.animation.BidirectionalTypeConverter;
+import android.content.Context;
+import android.media.Image;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -73,7 +77,12 @@ public class FamilyPhotoActivity extends SYMHOMEActivity {
 
     class FamilyPhotoAdapter extends BaseAdapter{
 
+        private LayoutInflater mInflater;
         private List<String> mItems = new ArrayList<>();
+
+        public FamilyPhotoAdapter() {
+            this.mInflater = (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        }
 
         @Override
         public int getCount() {
@@ -92,15 +101,35 @@ public class FamilyPhotoActivity extends SYMHOMEActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            ImageView imageView = new ImageView(getBaseContext());
-            Picasso.with(getBaseContext()).load("http://i.imgur.com/DvpvklR.png").into(imageView);
+            ViewHolder holder;
 
-            return imageView;
+            if(convertView == null) {
+                convertView = mInflater.inflate(R.layout.activity_family_photo_item, null);
+
+                holder = new ViewHolder();
+
+                holder.mImageView1 = (ImageView) convertView.findViewById(R.id.activity_family_photo_item_imageview1);
+                holder.mImageView2 = (ImageView) convertView.findViewById(R.id.activity_family_photo_item_imageview2);
+                holder.mImageView3 = (ImageView) convertView.findViewById(R.id.activity_family_photo_item_imageview3);
+
+                convertView.setTag(holder);
+            }
+            else {
+                holder = (ViewHolder) convertView.getTag();
+            }
+
+            Picasso.with(getBaseContext()).load("http://i.imgur.com/DvpvklR.png").fit().into(holder.mImageView1);
+            Picasso.with(getBaseContext()).load("http://i.imgur.com/DvpvklR.png").fit().into(holder.mImageView2);
+            Picasso.with(getBaseContext()).load("http://i.imgur.com/DvpvklR.png").fit().into(holder.mImageView3);
+
+            return convertView;
         }
     }
 
     private static class ViewHolder {
-        ImageView mImageView;
+        ImageView mImageView1;
+        ImageView mImageView2;
+        ImageView mImageView3;
     }
 
 

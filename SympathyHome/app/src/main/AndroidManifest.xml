@@ -27,7 +27,8 @@
         </activity>
         <activity
             android:name=".activity.FamilyPhotoActivity"
-            android:label="@string/title_activity_family_photo" >
+            android:label="@string/title_activity_family_photo"
+            >
         </activity>
         <activity
             android:name=".activity.SmartHomeAcitivy"
