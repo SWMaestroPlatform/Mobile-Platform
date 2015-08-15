@@ -8,33 +8,30 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="2dp"
-        android:layout_marginTop="2dp">
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="3dp">
 
         <ImageView
-            android:layout_width="138dp"
-            android:layout_height="138dp"
-            android:background="@color/background_floating_material_light"
+            android:layout_width="136dp"
+            android:layout_height="136dp"
             android:id="@+id/activity_family_photo_item_imageview1"/>
 
         <LinearLayout
-            android:layout_width="3dp"
+            android:layout_width="6dp"
             android:layout_height="fill_parent"/>
 
         <ImageView
-            android:layout_width="138dp"
-            android:layout_height="138dp"
-            android:background="@color/background_floating_material_light"
+            android:layout_width="136dp"
+            android:layout_height="136dp"
             android:id="@+id/activity_family_photo_item_imageview2"/>
 
         <LinearLayout
-            android:layout_width="3dp"
+            android:layout_width="6dp"
             android:layout_height="fill_parent"/>
 
         <ImageView
-            android:layout_width="138dp"
-            android:layout_height="138dp"
-            android:background="@color/background_floating_material_light"
+            android:layout_width="136dp"
+            android:layout_height="136dp"
             android:id="@+id/activity_family_photo_item_imageview3"/>
 
     </LinearLayout>

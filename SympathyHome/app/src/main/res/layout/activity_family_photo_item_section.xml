@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@color/abc_primary_text_disable_only_material_light"
+        android:text="8월 14일"
+        android:id="@+id/activity_family_photo_item_date_textview"/>
+
+</LinearLayout>
