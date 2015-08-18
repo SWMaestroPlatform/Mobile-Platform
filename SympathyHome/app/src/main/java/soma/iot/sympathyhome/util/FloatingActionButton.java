@@ -1,4 +1,4 @@
-package soma.iot.sympathyhome.FloatingView;
+package soma.iot.sympathyhome.util;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
