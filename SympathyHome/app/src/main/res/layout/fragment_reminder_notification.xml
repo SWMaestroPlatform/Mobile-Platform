@@ -9,65 +9,71 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/material_blue_grey_950">
-
-        <TextView
-            android:text="  자동알람"
-            android:textSize="25dp"
-            android:gravity="center_vertical"
-            android:layout_width="match_parent"
-            android:layout_height="60dp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:padding="10dp">
+        android:layout_weight="0.65"
+        android:paddingLeft="30dp"
+        android:orientation="horizontal"
+        android:background="@drawable/reminder_up">
 
         <CheckBox
             android:id="@+id/notification_auto_chkbox"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"/>
         <TextView
             android:text="  오늘의 날씨를 받아보겠습니까?"
-            android:textSize="18dp"
+            android:textSize="15dp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:textColor="#000000"
             android:gravity="center_vertical"/>
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/material_blue_grey_950">
+        android:layout_weight="0.4"
+        android:background="@drawable/reminder_down">
 
-        <TextView
-            android:text="  등록알람"
-            android:textSize="25dp"
-            android:gravity="center_vertical"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp" />
+            android:layout_height="match_parent"
+            android:padding="10dp">
+
+            <ListView
+                android:id="@+id/mListView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="25dp"
+                android:layout_marginTop="10dp"/>
+
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="bottom|right"
+                android:background="@drawable/circle_button"
+                android:text="+"
+                android:id="@+id/mFloatingActionButton"
+
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="30dp"
+                android:textColor="#ffffff"
+                android:textSize="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:textAlignment="center" />
+
+            <!--<soma.iot.sympathyhome.util.FloatingActionButton
+                android:id="@+id/mFloatingActionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:layout_margin="16dp"
+                android:src="@android:drawable/ic_menu_add"
+                fab:fab_colorNormal="#009688"
+                fab:fab_colorPressed="#26a69a" />-->
+        </FrameLayout>
     </LinearLayout>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="10dp">
 
-        <ListView
-            android:id="@+id/mListView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <soma.iot.sympathyhome.util.FloatingActionButton
-            android:id="@+id/mFloatingActionButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
-            android:layout_margin="16dp"
-            android:src="@android:drawable/ic_menu_add"
-            fab:fab_colorNormal="#009688"
-            fab:fab_colorPressed="#26a69a" />
-    </FrameLayout>
 
 </LinearLayout>

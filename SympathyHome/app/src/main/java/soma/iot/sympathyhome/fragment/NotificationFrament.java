@@ -26,7 +26,6 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import soma.iot.sympathyhome.R;
-import soma.iot.sympathyhome.util.FloatingActionButton;
 import soma.iot.sympathyhome.util.ReminderDate;
 import soma.iot.sympathyhome.util.ReminderDateAdapter;
 
@@ -36,7 +35,7 @@ import soma.iot.sympathyhome.util.ReminderDateAdapter;
 public class NotificationFrament extends Fragment {
 
     private LayoutInflater inflater;
-    private FloatingActionButton mFloatingButton;
+    private Button mFloatingButton;
     public ArrayList<ReminderDate> items;
     private ReminderDateAdapter adapter;
 
@@ -76,7 +75,7 @@ public class NotificationFrament extends Fragment {
 
     public void initialize(View view) {
         mListView = (ListView) view.findViewById(R.id.mListView);
-        mFloatingButton = (FloatingActionButton) view.findViewById(R.id.mFloatingActionButton);
+        mFloatingButton = (Button) view.findViewById(R.id.mFloatingActionButton);
         items = new ArrayList<ReminderDate>();
 
         WindowManager w = getActivity().getWindowManager();
@@ -98,8 +97,6 @@ public class NotificationFrament extends Fragment {
     }
 
     public void setLayout(View view) {
-
-        mFloatingButton.attachToListView(mListView);
         mFloatingButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -130,7 +127,7 @@ public class NotificationFrament extends Fragment {
             View layout = inflater.inflate(R.layout.popup_reminder,
                     (ViewGroup) view.findViewById(R.id.popup_reminder));
 
-            pwindo = new PopupWindow(layout, mWidthPixels - 140, mHeightPixels - 1000, true);
+            pwindo = new PopupWindow(layout, mWidthPixels - 140, mHeightPixels - 900, true);
             pwindo.showAtLocation(layout, Gravity.CENTER, 0, 0);
 
             curDate = (TextView) layout.findViewById(R.id.popup_reminder_date);
@@ -155,7 +152,12 @@ public class NotificationFrament extends Fragment {
             reminder_btn_date.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    new DatePickerDialog(getActivity(),mDateSetListener, mYear, mMonth, mDay).show();
+                    DatePickerDialog dpd = new DatePickerDialog(getActivity(),
+                            android.R.style.Theme_Holo_Light_Dialog_NoActionBar,
+                            mDateSetListener, mYear, mMonth, mDay);
+                    dpd.show();
+
+                    //new DatePickerDialog(getActivity(), mDateSetListener, mYear, mMonth, mDay).show();
                 }
             });
 
@@ -190,9 +192,7 @@ public class NotificationFrament extends Fragment {
                 }
             };
 
-
-
     public void UpdateNow() {
-        curDate.setText(String.format("%d/%d/%d", mYear, mMonth + 1, mDay));
+        curDate.setText(String.format("%d"+"년 "+"%d"+"월 "+"%d"+"일", mYear, mMonth + 1, mDay));
     }
 }

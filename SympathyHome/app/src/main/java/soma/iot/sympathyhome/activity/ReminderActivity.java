@@ -81,10 +81,14 @@ public class ReminderActivity extends SYMHOMEActivity implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.activity_reminder_btn_notification:
+                mImgBtnNotification.setBackgroundResource(R.drawable.btn_notification_click);
+                mImgBtnLetter.setBackgroundResource(R.drawable.btn_letter);
                 mCurrentFragmentIndex = FRAGMENT_ONE;
                 fragmentReplace(mCurrentFragmentIndex);
                 break;
             case R.id.activity_reminder_btn_letter:
+                mImgBtnNotification.setBackgroundResource(R.drawable.btn_notification);
+                mImgBtnLetter.setBackgroundResource(R.drawable.btn_letter_click);
                 mCurrentFragmentIndex = FRAGMENT_TWO;
                 fragmentReplace(mCurrentFragmentIndex);
                 break;

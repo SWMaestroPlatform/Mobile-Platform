@@ -5,9 +5,19 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="45dp"
+        android:background="@drawable/bg_title"
+        android:orientation="horizontal">
 
+        <ImageButton
+            android:id="@+id/btn_menu"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/btn_menu" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,19 +25,17 @@
 
         <Button
             android:id="@+id/activity_reminder_btn_notification"
-            android:text="알람"
-            android:textSize="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"/>
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="0.5"
+            android:background="@drawable/btn_notification_click"/>
 
         <Button
             android:id="@+id/activity_reminder_btn_letter"
-            android:text="편지"
-            android:textSize="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"/>
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="0.5"
+            android:background="@drawable/btn_letter"/>
 
     </LinearLayout>
 

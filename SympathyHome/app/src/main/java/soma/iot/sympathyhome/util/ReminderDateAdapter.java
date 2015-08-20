@@ -77,6 +77,7 @@ public class ReminderDateAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         // TODO Auto-generated method stub
 
+
         //크게 getView의 안에서는 2가지 작업이 이루어 집니다.
         //1. ListView의 목록 하나의 모양을 담당하는 View 객체를 만들어 내는 'New View'
         //2. 만들어진 View에 해당 Data를 연결하는 'Bind View'

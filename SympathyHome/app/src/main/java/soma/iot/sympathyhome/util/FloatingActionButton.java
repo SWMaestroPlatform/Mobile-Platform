@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.graphics.drawable.shapes.OvalShape;
@@ -211,22 +210,6 @@ public class FloatingActionButton extends ImageButton {
 	private void initAttributes(Context context, AttributeSet attributeSet) {
 		TypedArray attr = getTypedArray(context, attributeSet,
 				R.styleable.FloatingActionButton);
-		if (attr != null) {
-			try {
-				mColorNormal = attr.getColor(
-						R.styleable.FloatingActionButton_fab_colorNormal,
-						getColor(android.R.color.holo_blue_dark));
-				mColorPressed = attr.getColor(
-						R.styleable.FloatingActionButton_fab_colorPressed,
-						getColor(android.R.color.holo_blue_light));
-				mShadow = attr.getBoolean(
-						R.styleable.FloatingActionButton_fab_shadow, true);
-				mType = attr.getInt(R.styleable.FloatingActionButton_fab_type,
-						TYPE_NORMAL);
-			} finally {
-				attr.recycle();
-			}
-		}
 	}
 
 	private void updateBackground() {
@@ -242,18 +225,7 @@ public class FloatingActionButton extends ImageButton {
 		ShapeDrawable shapeDrawable = new ShapeDrawable(ovalShape);
 		shapeDrawable.getPaint().setColor(color);
 
-		if (mShadow) {
-			LayerDrawable layerDrawable = new LayerDrawable(new Drawable[] {
-					getResources().getDrawable(R.drawable.shadow),
-					shapeDrawable });
-			int shadowSize = getDimension(mType == TYPE_NORMAL ? R.dimen.fab_shadow_size
-					: R.dimen.fab_mini_shadow_size);
-			layerDrawable.setLayerInset(1, shadowSize, shadowSize, shadowSize,
-					shadowSize);
-			return layerDrawable;
-		} else {
-			return shapeDrawable;
-		}
+		return shapeDrawable;
 	}
 
 	private TypedArray getTypedArray(Context context,

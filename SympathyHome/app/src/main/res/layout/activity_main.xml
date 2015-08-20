@@ -1,30 +1,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent" android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:background="@drawable/bg_main"
+    android:orientation="vertical"
     android:weightSum="1">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.15"
+        android:layout_height="45dp"
+        android:background="@drawable/bg_title"
         android:orientation="horizontal">
-        
-         <ImageButton
+
+        <ImageButton
             android:id="@+id/btn_menu"
-            android:layout_marginLeft="10dp"
             android:layout_width="20dp"
-            android:layout_height="15dp"
+            android:layout_height="20dp"
             android:layout_gravity="center_vertical"
-            android:background="@drawable/btn_menu"/>
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/btn_menu" />
     </LinearLayout>
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.15">
-    </LinearLayout>
+        android:layout_weight="0.25"></LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,7 +36,7 @@
             android:id="@+id/mainactivity_imagebutton_reminder"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:background="@drawable/btn_reminder"/>
+            android:background="@drawable/btn_reminder" />
     </LinearLayout>
 
     <LinearLayout
@@ -46,10 +46,10 @@
         android:gravity="center">
 
         <ImageButton
+            android:id="@+id/mainactivity_imagebutton_photo"
             android:layout_width="180dp"
             android:layout_height="180dp"
-            android:background="@drawable/family_main"
-            android:id="@+id/mainactivity_imagebutton_photo" />
+            android:background="@drawable/family_main" />
     </LinearLayout>
 
     <LinearLayout
@@ -70,14 +70,13 @@
                 android:id="@+id/mainactivity_imagebutton_familyphoto"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:background="@drawable/btn_family_photo"/>
+                android:background="@drawable/btn_family_photo" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="0.4">
-        </LinearLayout>
+            android:layout_weight="0.4"></LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -89,7 +88,7 @@
                 android:id="@+id/mainactivity_imagebutton_smarthome"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:background="@drawable/btn_devicectl"/>
+                android:background="@drawable/btn_devicectl" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
