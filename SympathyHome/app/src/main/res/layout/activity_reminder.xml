@@ -1,6 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:layout_width="fill_parent" android:layout_height="fill_parent"
     android:weightSum="1">
 
     <LinearLayout
@@ -28,14 +29,14 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_weight="0.5"
-            android:background="@drawable/btn_notification_click"/>
+            android:background="@drawable/btn_notification_click" />
 
         <Button
             android:id="@+id/activity_reminder_btn_letter"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_weight="0.5"
-            android:background="@drawable/btn_letter"/>
+            android:background="@drawable/btn_letter" />
 
     </LinearLayout>
 
@@ -43,7 +44,5 @@
         android:id="@+id/fragment_reminder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.9">
-
-    </FrameLayout>
+        android:layout_weight="1"></FrameLayout>
 </LinearLayout>

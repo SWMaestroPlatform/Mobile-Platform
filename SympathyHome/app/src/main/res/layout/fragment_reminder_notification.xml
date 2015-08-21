@@ -1,37 +1,35 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:weightSum="1">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.65"
-        android:paddingLeft="30dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="0.73"
+        android:background="@drawable/reminder_up"
         android:orientation="horizontal"
-        android:background="@drawable/reminder_up">
+        android:paddingLeft="30dp">
 
         <CheckBox
             android:id="@+id/notification_auto_chkbox"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
+
         <TextView
-            android:text="  오늘의 날씨를 받아보겠습니까?"
-            android:textSize="15dp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="  오늘의 날씨를 받아보겠습니까?"
             android:textColor="#000000"
-            android:gravity="center_vertical"/>
-
+            android:textSize="15dp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.4"
+        android:layout_height="fill_parent"
+        android:layout_weight="0.27"
         android:background="@drawable/reminder_down">
 
         <FrameLayout
@@ -43,24 +41,23 @@
                 android:id="@+id/mListView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="25dp"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="10dp"
+                android:padding="25dp" />
 
             <Button
+                android:id="@+id/mFloatingActionButton"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:layout_gravity="bottom|right"
-                android:background="@drawable/circle_button"
-                android:text="+"
-                android:id="@+id/mFloatingActionButton"
-
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="30dp"
-                android:textColor="#ffffff"
-                android:textSize="40dp"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentEnd="true"
-                android:textAlignment="center" />
+                android:layout_gravity="bottom|right"
+                android:layout_marginBottom="30dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/circle_button"
+                android:text="+"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textSize="40dp" />
 
             <!--<soma.iot.sympathyhome.util.FloatingActionButton
                 android:id="@+id/mFloatingActionButton"
@@ -73,7 +70,4 @@
                 fab:fab_colorPressed="#26a69a" />-->
         </FrameLayout>
     </LinearLayout>
-
-
-
 </LinearLayout>

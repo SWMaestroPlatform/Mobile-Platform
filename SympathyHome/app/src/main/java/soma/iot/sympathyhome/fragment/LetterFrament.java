@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Chronometer;
 
 import soma.iot.sympathyhome.R;
 
@@ -14,6 +16,10 @@ import soma.iot.sympathyhome.R;
 public class LetterFrament extends Fragment{
 
     private LayoutInflater inflater;
+    private Button mBtnRecorde;
+    public Chronometer chronometer;
+
+    private boolean flagTimer;
 
     public LetterFrament() {
         // Required empty public constructor
@@ -37,11 +43,26 @@ public class LetterFrament extends Fragment{
         return view;
     }
 
-    public void setLayout(LayoutInflater inflater) {
+    public void initialize(View view) {
+        flagTimer = false;
 
+        chronometer = (Chronometer) view.findViewById(R.id.fragment_letter_timer);
+        mBtnRecorde = (Button) view.findViewById(R.id.fragment_letter_recorde);
     }
 
-    public void initialize(View view) {
-
+    public void setLayout(LayoutInflater inflater) {
+        mBtnRecorde.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(flagTimer == false) {
+                    chronometer.start();
+                    flagTimer = true;
+                }
+                else {
+                    chronometer.stop();
+                    flagTimer = false;
+                }
+            }
+        });
     }
 }
