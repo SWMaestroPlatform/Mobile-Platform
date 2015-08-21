@@ -1,9 +1,8 @@
 package soma.iot.sympathyhome.activity;
 
-import android.animation.BidirectionalTypeConverter;
 import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,19 +15,21 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
-import java.util.zip.Inflater;
 
 import soma.iot.sympathyhome.R;
 import soma.iot.sympathyhome.ui.SYMHOMEActivity;
+import soma.iot.sympathyhome.util.YSDataUtil;
+import soma.iot.sympathyhome.util.YSTransformation;
 
 public class FamilyPhotoActivity extends SYMHOMEActivity {
 
@@ -48,6 +49,8 @@ public class FamilyPhotoActivity extends SYMHOMEActivity {
     private ListView mImageListView;
     private FamilyPhotoAdapter mImageAdapter;
 
+    private Map<String, List<String>> mFamilyPhotoMap;
+
     @Override
     public void setLayout() {
 
@@ -59,7 +62,30 @@ public class FamilyPhotoActivity extends SYMHOMEActivity {
                 startActivityForResult(intent, REQUEST_IMAGE);
             }
         });
+
+
+//        ArrayList<int> arrayList = new ArrayList<>();
+//        arrayList.add(R.drawable.photo_autumn_01);
+
+//        Uri uri = Uri.parse("android.resource://org.xyz.abc/drawable/myimage");
+
+
+        mFamilyPhotoMap = YSDataUtil.getInstance().getFamilyPhotoMap();
+        Iterator<String> keys = mFamilyPhotoMap.keySet().iterator();
+        while (keys.hasNext()) {
+            String key = keys.next();
+            mImageAdapter.addSections(key, new FamilyImageViewAdapter(mFamilyPhotoMap.get(key)));
+//            System.out.printf("%s = %s \n", key, mFamilyPhotoMap.get(key));
+
+        }
+
+//        mImageAdapter.addSections("8월 15일 토요일", new FamilyImageViewAdapter(YSDataUtil.getFamilyPhotoList()));
+//        mImageAdapter.addSections("8월 10일 월요일", new FamilyImageViewAdapter());
+//        mImageAdapter.addSections("8월  9일 일요일", new FamilyImageViewAdapter());
+
+        mImageListView.setAdapter(mImageAdapter);
     }
+
 
     @Override
     public void initActivity() {
@@ -68,7 +94,7 @@ public class FamilyPhotoActivity extends SYMHOMEActivity {
         mImageListView = (ListView) findViewById(R.id.familyphotoactivity_listview);
 
         mImageAdapter = new FamilyPhotoAdapter();
-        mImageListView.setAdapter(mImageAdapter);
+
     }
 
     @Override
@@ -137,9 +163,6 @@ public class FamilyPhotoActivity extends SYMHOMEActivity {
             this.mInflater = (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             headers = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_list_item_1);
 
-            addSections("8월 15일 토요일", new FamilyImageViewAdapter());
-            addSections("8월 10일 월요일", new FamilyImageViewAdapter());
-            addSections("8월  9일 일요일", new FamilyImageViewAdapter());
         }
 
         public void addSections(String sectionHeader, FamilyImageViewAdapter adapter){
@@ -235,18 +258,11 @@ public class FamilyPhotoActivity extends SYMHOMEActivity {
 
         public FamilyImageViewAdapter() {
             this.mInflater = (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            mItems.add("aaa");
-            mItems.add("aaa");
-            mItems.add("aaa");
-            mItems.add("aaa");
-            mItems.add("aaa");
-            mItems.add("aaa");
-            mItems.add("aaa");
-            mItems.add("aaa");
-            mItems.add("aaa");
-            mItems.add("aaa");
-            mItems.add("aaa");
+        }
 
+        public FamilyImageViewAdapter(List<String> Items) {
+            this.mInflater = (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            mItems = Items;
         }
 
         public void addItem(final String item) {
@@ -271,7 +287,7 @@ public class FamilyPhotoActivity extends SYMHOMEActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            ViewHolder holder;
+            final ViewHolder holder;
             int rowType = getItemViewType(position);
 
             if(convertView == null) {
@@ -292,17 +308,19 @@ public class FamilyPhotoActivity extends SYMHOMEActivity {
 
             if (position < mItems.size()/3)
             {
-                Picasso.with(getBaseContext()).load("http://i.imgur.com/DvpvklR.png").fit().into(holder.mImageView1);
-                Picasso.with(getBaseContext()).load("http://i.imgur.com/DvpvklR.png").fit().into(holder.mImageView2);
-                Picasso.with(getBaseContext()).load("http://i.imgur.com/DvpvklR.png").fit().into(holder.mImageView3);
+//                YSTransformation transformation = new YSTransformation(holder.mImageView1.getWidth());
+                Picasso.with(getBaseContext()).load(mItems.get(position * 3)).resize(300, 300).into(holder.mImageView1);
+                Picasso.with(getBaseContext()).load(mItems.get(position * 3 + 1)).resize(300, 300).into(holder.mImageView2);
+                Picasso.with(getBaseContext()).load(mItems.get(position*3+2)).resize(300,300).into(holder.mImageView3);
             }
             else {
                 switch (mItems.size()%3)
                 {
                     case 2:
-                        Picasso.with(getBaseContext()).load("http://i.imgur.com/DvpvklR.png").fit().into(holder.mImageView2);
+                        Picasso.with(getBaseContext()).load(mItems.get(position*3 +1)).resize(300,300).into(holder.mImageView2);
                     case 1:
-                        Picasso.with(getBaseContext()).load("http://i.imgur.com/DvpvklR.png").fit().into(holder.mImageView1);
+                        Picasso.with(getBaseContext()).load(mItems.get(position*3)).resize(300,300).into(holder.mImageView1);
+//                        Picasso.with(getBaseContext()).load(mItems.get(position*3)).fit().into(holder.mImageView1);
                         break;
                 }
             }

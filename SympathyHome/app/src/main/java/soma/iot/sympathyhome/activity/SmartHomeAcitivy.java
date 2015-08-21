@@ -1,9 +1,8 @@
 package soma.iot.sympathyhome.activity;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
@@ -36,7 +35,7 @@ public class SmartHomeAcitivy extends SYMHOMEActivity {
     public void initActivity() {
         mViewPager = (ViewPager) findViewById(R.id.activity_smart_home_pager);
 
-        mCustomPagerAdapter = new CustomPagerAdapter(  getFragmentManager(), this);
+//        mCustomPagerAdapter = new CustomPagerAdapter(  getFragmentManager(), this);
 
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mCustomPagerAdapter);
@@ -52,10 +51,10 @@ public class SmartHomeAcitivy extends SYMHOMEActivity {
         }
 
         @Override
-        public Fragment getItem(int position) {
+        public android.support.v4.app.Fragment getItem(int position) {
 
             // Create fragment object
-            Fragment fragment = new SmartHomeItemFragment();
+            android.support.v4.app.Fragment fragment = new SmartHomeItemFragment();
 
             // Attach some data to the fragment
             // that we'll use to populate our fragment layouts

@@ -13,7 +13,7 @@ import soma.iot.sympathyhome.ui.SYMHOMEFragment;
 /**
  * A fragment with a Google +1 button.
  */
-public class SmartHomeItemFragment extends SYMHOMEFragment {
+public class SmartHomeItemFragment extends Fragment {
 
     private static final int PLUS_ONE_REQUEST_CODE = 0;
 
