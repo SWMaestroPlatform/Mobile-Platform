@@ -6,4 +6,9 @@
     <string name="title_activity_family_photo">FamilyPhotoActivity</string>
     <string name="title_activity_smart_home_acitivy">SmartHomeAcitivy</string>
     <string name="title_activity_reminder">ReminderActivity</string>
+    <string name="title_activity_smart_home_control">SmartHomeControlActivity</string>
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
 </resources>

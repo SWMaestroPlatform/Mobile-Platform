@@ -1,14 +1,22 @@
 package soma.iot.sympathyhome.activity;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import soma.iot.sympathyhome.R;
+import soma.iot.sympathyhome.fragment.SmartHomeItemFragment;
 import soma.iot.sympathyhome.ui.SYMHOMEActivity;
 
 public class SmartHomeAcitivy extends SYMHOMEActivity {
+
+    CustomPagerAdapter mCustomPagerAdapter;
+    ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +34,51 @@ public class SmartHomeAcitivy extends SYMHOMEActivity {
 
     @Override
     public void initActivity() {
+        mViewPager = (ViewPager) findViewById(R.id.activity_smart_home_pager);
 
+        mCustomPagerAdapter = new CustomPagerAdapter(  getFragmentManager(), this);
+
+        mViewPager = (ViewPager) findViewById(R.id.pager);
+        mViewPager.setAdapter(mCustomPagerAdapter);
+    }
+
+    class CustomPagerAdapter extends FragmentPagerAdapter {
+
+        Context mContext;
+
+        public CustomPagerAdapter(FragmentManager fm, Context context) {
+            super(fm);
+            mContext = context;
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+
+            // Create fragment object
+            Fragment fragment = new SmartHomeItemFragment();
+
+            // Attach some data to the fragment
+            // that we'll use to populate our fragment layouts
+            Bundle args = new Bundle();
+            args.putInt("page_position", position + 1);
+
+            // Set the arguments on the fragment
+            // that will be fetched in the
+            // DemoFragment@onCreateView
+            fragment.setArguments(args);
+
+            return fragment;
+        }
+
+        @Override
+        public int getCount() {
+            return 3;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return "Page " + (position + 1);
+        }
     }
 
     @Override
@@ -50,4 +102,5 @@ public class SmartHomeAcitivy extends SYMHOMEActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }
