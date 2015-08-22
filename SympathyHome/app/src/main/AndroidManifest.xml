@@ -35,6 +35,10 @@
             android:name=".activity.ReminderActivity"
             android:label="@string/title_activity_reminder" >
         </activity>
+        <activity
+            android:name=".activity.SmartThingsActivity"
+            android:label="@string/title_activity_smart_things" >
+        </activity>
     </application>
 
 </manifest>

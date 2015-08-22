@@ -10,25 +10,31 @@ import com.squareup.picasso.Transformation;
  */
 public class YSTransformation implements Transformation {
 
-    public YSTransformation(int width) {
-        mWidth = width;
-    }
+    int maxWidth;
+    int maxHeight;
 
-    public static YSTransformation getInstance(int width){
-        return new YSTransformation(width);
+    public YSTransformation(int maxWidth, int maxHeight) {
+        this.maxWidth = maxWidth;
+        this.maxHeight = maxHeight;
     }
-
-    public int mWidth;
 
     @Override
-    public Bitmap transform(final Bitmap source) {
-        int targetWidth = mWidth;
+    public Bitmap transform(Bitmap source) {
+        int targetWidth, targetHeight;
+        double aspectRatio;
 
-        double aspectRatio = (double) source.getHeight() / (double) source.getWidth();
-        int targetHeight = (int) (targetWidth * aspectRatio);
+        if (source.getWidth() > source.getHeight()) {
+            targetWidth = maxWidth;
+            aspectRatio = (double) source.getHeight() / (double) source.getWidth();
+            targetHeight = (int) (targetWidth * aspectRatio);
+        } else {
+            targetHeight = maxHeight;
+            aspectRatio = (double) source.getWidth() / (double) source.getHeight();
+            targetWidth = (int) (targetHeight * aspectRatio);
+        }
+
         Bitmap result = Bitmap.createScaledBitmap(source, targetWidth, targetHeight, false);
         if (result != source) {
-            // Same bitmap is returned if sizes are the same
             source.recycle();
         }
         return result;
@@ -36,6 +42,7 @@ public class YSTransformation implements Transformation {
 
     @Override
     public String key() {
-        return "rounded(radius=)";
+        return maxWidth + "x" + maxHeight;
     }
+
 }

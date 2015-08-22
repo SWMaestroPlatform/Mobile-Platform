@@ -1,12 +1,10 @@
 package soma.iot.sympathyhome.activity;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import soma.iot.sympathyhome.R;
 import soma.iot.sympathyhome.fragment.SmartHomeItemFragment;
@@ -14,8 +12,6 @@ import soma.iot.sympathyhome.ui.SYMHOMEActivity;
 
 public class SmartHomeAcitivy extends SYMHOMEActivity {
 
-    CustomPagerAdapter mCustomPagerAdapter;
-    ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,58 +22,51 @@ public class SmartHomeAcitivy extends SYMHOMEActivity {
         setLayout();
     }
 
-    @Override
-    public void setLayout() {
+    private Button mTabImageButton1;
+    private Button mTabImageButton2;
 
-    }
+    private SmartHomeItemFragment mSmartHomeFragment1;
+    private SmartHomeItemFragment mSmartHomeFragment2;
+
 
     @Override
     public void initActivity() {
-        mViewPager = (ViewPager) findViewById(R.id.activity_smart_home_pager);
+        mTabImageButton1 = (Button) findViewById(R.id.activity_smart_home_activity_btn1);
+        mTabImageButton2 = (Button) findViewById(R.id.activity_smart_home_activity_btn2);
 
-//        mCustomPagerAdapter = new CustomPagerAdapter(  getFragmentManager(), this);
+        mSmartHomeFragment1 = SmartHomeItemFragment.newInstance();
+        mSmartHomeFragment1.setSmartThings(SmartHomeItemFragment.SMARTTHING.CONCENT, false);
 
-        mViewPager = (ViewPager) findViewById(R.id.pager);
-        mViewPager.setAdapter(mCustomPagerAdapter);
+        mSmartHomeFragment2 = SmartHomeItemFragment.newInstance();
+        mSmartHomeFragment2.setSmartThings(SmartHomeItemFragment.SMARTTHING.DOOR, false);
+
+        getFragmentManager().beginTransaction()
+                .replace(R.id.activity_smart_home_activity_fragment_container, mSmartHomeFragment1)
+                .addToBackStack(null)
+                .commit();
     }
 
-    class CustomPagerAdapter extends FragmentPagerAdapter {
+    @Override
+    public void setLayout() {
+        mTabImageButton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.activity_smart_home_activity_fragment_container, mSmartHomeFragment1)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
 
-        Context mContext;
-
-        public CustomPagerAdapter(FragmentManager fm, Context context) {
-            super(fm);
-            mContext = context;
-        }
-
-        @Override
-        public android.support.v4.app.Fragment getItem(int position) {
-
-            // Create fragment object
-            android.support.v4.app.Fragment fragment = new SmartHomeItemFragment();
-
-            // Attach some data to the fragment
-            // that we'll use to populate our fragment layouts
-            Bundle args = new Bundle();
-            args.putInt("page_position", position + 1);
-
-            // Set the arguments on the fragment
-            // that will be fetched in the
-            // DemoFragment@onCreateView
-            fragment.setArguments(args);
-
-            return fragment;
-        }
-
-        @Override
-        public int getCount() {
-            return 3;
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return "Page " + (position + 1);
-        }
+        mTabImageButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.activity_smart_home_activity_fragment_container, mSmartHomeFragment2)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
     }
 
     @Override

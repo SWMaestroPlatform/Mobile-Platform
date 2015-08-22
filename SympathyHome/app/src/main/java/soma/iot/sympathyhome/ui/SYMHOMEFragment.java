@@ -25,5 +25,5 @@ public abstract class SYMHOMEFragment extends Fragment {
 //                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
     }
     public abstract void setLayout(View view);
-    public abstract void initFragment();
+    public abstract void initFragment(View view);
 }

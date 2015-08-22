@@ -64,24 +64,12 @@ public class FamilyPhotoActivity extends SYMHOMEActivity {
         });
 
 
-//        ArrayList<int> arrayList = new ArrayList<>();
-//        arrayList.add(R.drawable.photo_autumn_01);
-
-//        Uri uri = Uri.parse("android.resource://org.xyz.abc/drawable/myimage");
-
-
         mFamilyPhotoMap = YSDataUtil.getInstance().getFamilyPhotoMap();
         Iterator<String> keys = mFamilyPhotoMap.keySet().iterator();
         while (keys.hasNext()) {
             String key = keys.next();
             mImageAdapter.addSections(key, new FamilyImageViewAdapter(mFamilyPhotoMap.get(key)));
-//            System.out.printf("%s = %s \n", key, mFamilyPhotoMap.get(key));
-
         }
-
-//        mImageAdapter.addSections("8월 15일 토요일", new FamilyImageViewAdapter(YSDataUtil.getFamilyPhotoList()));
-//        mImageAdapter.addSections("8월 10일 월요일", new FamilyImageViewAdapter());
-//        mImageAdapter.addSections("8월  9일 일요일", new FamilyImageViewAdapter());
 
         mImageListView.setAdapter(mImageAdapter);
     }
@@ -285,6 +273,13 @@ public class FamilyPhotoActivity extends SYMHOMEActivity {
             return 0;
         }
 
+
+        private static final int MAX_WIDTH = 1024;
+        private static final int MAX_HEIGHT = 768;
+
+        int size = (int) Math.ceil(Math.sqrt(MAX_WIDTH * MAX_HEIGHT));
+
+
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             final ViewHolder holder;
@@ -309,7 +304,9 @@ public class FamilyPhotoActivity extends SYMHOMEActivity {
             if (position < mItems.size()/3)
             {
 //                YSTransformation transformation = new YSTransformation(holder.mImageView1.getWidth());
-                Picasso.with(getBaseContext()).load(mItems.get(position * 3)).resize(300, 300).into(holder.mImageView1);
+                // Loads given image
+
+                Picasso.with(getBaseContext()).load(mItems.get(position * 3)).resize(size, size).centerInside().into(holder.mImageView1);
                 Picasso.with(getBaseContext()).load(mItems.get(position * 3 + 1)).resize(300, 300).into(holder.mImageView2);
                 Picasso.with(getBaseContext()).load(mItems.get(position*3+2)).resize(300,300).into(holder.mImageView3);
             }
