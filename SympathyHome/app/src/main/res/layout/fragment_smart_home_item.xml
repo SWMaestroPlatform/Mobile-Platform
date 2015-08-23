@@ -2,81 +2,66 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#EDEDED">
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Smart Things"
-        android:gravity="center"
-        android:textColor="#B3B3B3"
-        android:textSize="50dp"
-        android:layout_marginBottom="71dp"
-        android:layout_above="@+id/linearLayout2"
-        android:layout_alignParentStart="true"
-        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="270dp"
+        android:layout_height="180dp"
         android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="75dp"
-        android:id="@+id/linearLayout2">
+        android:layout_marginLeft="120dp"
+        android:id="@+id/linearLayout2"
+        android:layout_marginTop="180dp">
 
         <ImageButton
-            android:layout_width="270dp"
-            android:layout_height="270dp"
-            android:src="@drawable/btn_smartthings"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:src="@drawable/btn_smartthings_gray"
             android:layout_gravity="center"
             android:backgroundTintMode="src_in"
-            android:background="#FFFFFF"
+            android:background="#EDEDED"
             android:id="@+id/fragment_smart_home_item_imagebutton"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="270dp"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="75dp">
+        android:layout_height="180dp"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="180dp">
 
         <LinearLayout
-            android:layout_width="270dp"
-            android:layout_height="270dp"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
             android:orientation="vertical"
             android:showDividers="middle|end">
 
             <TextView
                 android:layout_width="fill_parent"
-                android:layout_height="100dp"
+                android:layout_height="fill_parent"
                 android:text="ON"
-                android:textColor="#ffffff"
+                android:textColor="#B3B3B3"
                 android:textAlignment="center"
                 android:textStyle="normal"
-                android:textSize="55dp"
-                android:gravity="center|bottom"
-                android:layout_marginBottom="5dp"
+                android:textSize="40dp"
+                android:gravity="center"
                 android:id="@+id/fragment_smart_home_item_textview"/>
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#FFFFFF"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"></LinearLayout>
-
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginTop="25dp"
-                android:cropToPadding="false"
-                android:layout_gravity="center_horizontal"
-                android:src="@drawable/btn_smartthing1"
-                android:id="@+id/fragment_smart_home_item_imageview"/>
 
         </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="450dp"
+            android:cropToPadding="false"
+            android:src="@drawable/btn_smartthing1"
+            android:id="@+id/fragment_smart_home_item_imageview"
+            android:layout_marginLeft="180dp" />
     </LinearLayout>
 
 </RelativeLayout>

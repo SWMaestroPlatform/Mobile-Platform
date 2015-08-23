@@ -1,6 +1,7 @@
 package soma.iot.sympathyhome.fragment;
 
 
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -56,6 +57,7 @@ public class SmartHomeItemFragment extends SYMHOMEFragment {
     private TextView mToggleTextView;
     private ImageButton mImageButton;
     private ImageView mSmartthingImageview;
+//    private TextView mLargeTextView;
 
     @Override
     public void initFragment(View view)
@@ -78,14 +80,17 @@ public class SmartHomeItemFragment extends SYMHOMEFragment {
         initwithToggle(mToggleSwitch);
 
         mSmartthingImageview = (ImageView) view.findViewById(R.id.fragment_smart_home_item_imageview);
+//        mLargeTextView = (TextView) view.findViewById(R.id.fragment_smart_home_item_large_textview);
 
         switch (mSmartthing)
         {
             case CONCENT:
                 mSmartthingImageview.setImageResource(R.drawable.btn_smartthing1);
+//                mLargeTextView.setText("Smart Plug");
                 break;
             case DOOR:
                 mSmartthingImageview.setImageResource(R.drawable.btn_smartthing2);
+//                mLargeTextView.setText("Smart Door");
                 break;
             default:
                 break;
@@ -102,13 +107,16 @@ public class SmartHomeItemFragment extends SYMHOMEFragment {
     private void changeStatus(){
         if (mToggleSwitch){
             mToggleSwitch = false;
-            mImageButton.setImageResource(R.drawable.btn_smartthings_gray);
+//            mImageButton.setImageResource(R.drawable.btn_smartthings_gray);
             mToggleTextView.setText("OFF");
+            mToggleTextView.setTextColor(Color.parseColor("#B3B3B3"));
         }
         else {
             mToggleSwitch = true;
-            mImageButton.setImageResource(R.drawable.btn_smartthings);
+//            mImageButton.setImageResource(R.drawable.btn_smartthings);
             mToggleTextView.setText("ON");
+            mToggleTextView.setTextColor(Color.parseColor("#FF6B93"));
+
         }
     }
 
@@ -116,13 +124,13 @@ public class SmartHomeItemFragment extends SYMHOMEFragment {
     {
         if (mToggleSwitch)  //true
         {
-            mImageButton.setImageResource(R.drawable.btn_smartthings);
             mToggleTextView.setText("ON");
+            mToggleTextView.setTextColor(Color.parseColor("#FF6B93"));
         }
         else
         {
-            mImageButton.setImageResource(R.drawable.btn_smartthings_gray);
             mToggleTextView.setText("OFF");
+            mToggleTextView.setTextColor(Color.parseColor("#B3B3B3"));
         }
     }
 

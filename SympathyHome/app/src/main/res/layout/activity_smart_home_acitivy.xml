@@ -30,7 +30,7 @@
             android:layout_height="40dp"
             android:layout_weight="0.5"
             android:background="#99D4F3"
-            android:text="Smart Concent"/>
+            android:text="Smart Plug"/>
 
         <Button
             android:id="@+id/activity_smart_home_activity_btn2"
@@ -38,7 +38,7 @@
             android:layout_height="40dp"
             android:layout_weight="0.5"
             android:background="#99D4F3"
-            android:text="Smart Door   "/>
+            android:text="Smart Door"/>
 
     </LinearLayout>
 
