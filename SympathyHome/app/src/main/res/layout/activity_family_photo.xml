@@ -32,21 +32,22 @@
         android:divider="#00ffffff"
         android:dividerHeight="0dp"
         android:listSelector="@android:color/transparent"
-        android:cacheColorHint="@android:color/transparent"/>
+        android:cacheColorHint="@android:color/transparent"
+        />
 
     </LinearLayout>
 
     <Button
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:background="@drawable/circle_button"
         android:text="+"
         android:id="@+id/familyphotoactivity_button_add"
 
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:textColor="#ffffff"
-        android:textSize="40dp"
+        android:textSize="35dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:textAlignment="center" />

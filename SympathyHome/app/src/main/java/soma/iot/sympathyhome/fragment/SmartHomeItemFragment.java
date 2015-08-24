@@ -16,9 +16,7 @@ import android.widget.ToggleButton;
 import soma.iot.sympathyhome.R;
 import soma.iot.sympathyhome.ui.SYMHOMEFragment;
 
-/**
- * A fragment with a Google +1 button.
- */
+
 public class SmartHomeItemFragment extends SYMHOMEFragment {
 
     public enum SMARTTHING {CONCENT, DOOR };

@@ -306,17 +306,17 @@ public class FamilyPhotoActivity extends SYMHOMEActivity {
 //                YSTransformation transformation = new YSTransformation(holder.mImageView1.getWidth());
                 // Loads given image
 
-                Picasso.with(getBaseContext()).load(mItems.get(position * 3)).resize(300, 300).centerInside().into(holder.mImageView1);
-                Picasso.with(getBaseContext()).load(mItems.get(position * 3 + 1)).resize(300, 300).into(holder.mImageView2);
-                Picasso.with(getBaseContext()).load(mItems.get(position*3+2)).resize(300,300).into(holder.mImageView3);
+                Picasso.with(getBaseContext()).load(mItems.get(position * 3)).resize(300, 300).centerCrop().into(holder.mImageView1);
+                Picasso.with(getBaseContext()).load(mItems.get(position * 3 + 1)).resize(300, 300).centerCrop().into(holder.mImageView2);
+                Picasso.with(getBaseContext()).load(mItems.get(position*3+2)).resize(300,300).centerCrop().into(holder.mImageView3);
             }
             else {
                 switch (mItems.size()%3)
                 {
                     case 2:
-                        Picasso.with(getBaseContext()).load(mItems.get(position*3 +1)).resize(300,300).into(holder.mImageView2);
+                        Picasso.with(getBaseContext()).load(mItems.get(position*3 +1)).resize(300,300).centerCrop().into(holder.mImageView2);
                     case 1:
-                        Picasso.with(getBaseContext()).load(mItems.get(position*3)).resize(300,300).into(holder.mImageView1);
+                        Picasso.with(getBaseContext()).load(mItems.get(position*3)).resize(300,300).centerCrop().into(holder.mImageView1);
 //                        Picasso.with(getBaseContext()).load(mItems.get(position*3)).fit().into(holder.mImageView1);
                         break;
                 }
